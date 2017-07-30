@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div>
+    <h2>Users</h2>
+    <ul class='list-group'>
+      {% for user in users %}
+
+      <li class='list-group-item'>{{ user.name }}
+        {% if user.manager === true %}<span class='label label-success'>Manager</span>{% endif %}
+
+        {% if user.manager === false %}
+        <div class='form-group'>
+          <form action="/users/{{ user.id }}?_method=PUT" method="POST">
+            <button name='manager' value='true' class='btn btn-primary form-control'>Make Manager</button>
+          </form>
+          <form action="/users/{{ user.id }}?_method=DELETE" method="POST">
+            <button class='btn btn-danger form-control'>Delete</button>
+          </form>
+        </div>
+        {% endif %}
+    </li>
+
+      {% endfor %}
+    </ul>
+
+  </div>
+
+{% endblock %}

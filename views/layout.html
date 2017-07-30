@@ -4,9 +4,21 @@
   </head>
   <body>
     <div class='container'>
-    <h1>ACME USERS PG</h1>
-    {% block content %}
-    {% endblock %}
+      <h1>Acme Users PG</h1>
+
+      <nav>
+        <ul class='nav nav-tabs'>
+          <li role='presentation' {% if nav === 'Home' %} class='active'{% endif %}><a href="/">Home</a></li>
+          <li role='presentation' {% if nav === 'Users' %} class='active'{% endif %}><a href="/users">Users ({{ userCount }})</a></li>
+          <li role='presentation' {% if nav === 'Managers' %} class='active'{% endif %}><a href="/users/managers">Managers ({{ managerCount }})</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        {% block content %}
+        {% endblock %}
+      </div>
+
     </div>
   </body>
 </html>
