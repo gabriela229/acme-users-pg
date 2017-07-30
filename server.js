@@ -44,10 +44,10 @@ app.post('/', function(req, res, next){
   db.createUser(req.body)
   .then(function(){
     res.redirect('/users');
-  });
-  // .catch(function(err){
-
-  //   });
+  })
+  .catch(function(err){
+    res.render('index.html', {error: err})
+    });
 });
 
 app.use(function(err, req, res, next){

@@ -50,7 +50,10 @@ function createUser(user){
   if (!user.name){
     throw 'Name is required!';
   }
-  return query(`INSERT INTO users (name, manager) VALUES ($1, $2)`, [user.name, user.manager || false]);
+  return query(`INSERT INTO users (name, manager) VALUES ($1, $2)`, [user.name, user.manager || false])
+    // .catch(function(err){
+    //   return err;
+    // });
 
 }
 
